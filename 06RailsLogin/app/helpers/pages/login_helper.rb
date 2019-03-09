@@ -1,0 +1,2 @@
+module Pages::LoginHelper
+end

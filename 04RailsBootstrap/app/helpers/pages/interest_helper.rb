@@ -1,0 +1,2 @@
+module Pages::InterestHelper
+end
