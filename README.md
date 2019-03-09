@@ -1,4 +1,4 @@
-Fast Learning Ruby + Rails
+Fast Learning Ruby + Rails - SanSoo Han
 ===========================
 Mimic This Project by yourself.<br>
 If you don't like to cheet for some reason, go ahead and search some lecture in the Utube.<br>
