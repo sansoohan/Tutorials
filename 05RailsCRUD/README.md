@@ -1,12 +1,15 @@
 RailsCRUD
 =====================
-Make Data Array<br>
+
+Make Data Array
+------------------------
 ```
 rails g model user user_id:string user_pass:text user_name:string user_email:string
 rake db:migrate
 ```
-<br>
-Create Data<br>
+
+Create Data
+------------------------
 ```
 rails c
 user = User.new(:user_id => "sss", :user_pass => "sss", :user_name => "sss", :user_email => "sss")
@@ -14,14 +17,16 @@ user.save
 user
 User.create(:user_id => "ss", :user_pass => "ss", :user_name => "ss", :user_email => "ss")
 ```
-<br>
-Read Array<br>
+
+Read Array
+------------------------
 ```
 users = User.all
 users[1]
 ```
-<br>
-Select Data<br>
+
+Select Data
+------------------------
 ```
 User.find(2)
 User.find(2).user_id
@@ -29,8 +34,9 @@ User.where(user_id: "sss")[0]
 User.where(user_id: "sss").select("user_name", "user_email")[0]
 User.where("user_id = ? AND user_pass = ?", "sss", "sss")[0]
 ```
-<br>
-Update Data<br>
+
+Update Data
+------------------------
 ```
 user = User.find(1)
 user.user_name = "SSS"
@@ -41,15 +47,17 @@ User.find(1).user_name
 user.update_attributes(:user_name => "SSD", :user_email => "DSS")
 User.find(1)
 ```
-<br>
-Delete Data<br>
+
+Delete Data
+------------------------
 ```
 User.create(:user_id => "ssss", :user_pass => "ssss", :user_name => "ssss", :user_email => "ssss")
 user = User.where("user_id = ? AND user_pass = ?", "ssss", "ssss")[0]
 user.destroy
 ```
-<br>
-Database Architect<br>
+
+Database Architect
+------------------------
 ```
 rake db:migrate VERSION=0
 rails d model user
