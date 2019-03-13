@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   namespace :pages do
+    get 'room/index'
+    post 'room/index'
     get 'home/index'
     get 'register/index'
     post 'register/index'

@@ -2,24 +2,40 @@
 
 <body>
     <!-- Page Content -->
-    <div class="container" id="waiting">
-        <div class="row" id="room-list">
+    <div class="container waiting-container">
+        <div class="row room-and-user-row" id="">
             <div class="container col-9 d-flex flex-wrap">
                 <% for room_number in (1..10) do %>
-                    <div class="game-room">
-                        <%= "Game Room #{room_number}" %>
+                    <div class="container room-container d-flex flex-wrap">
+                        <div class="room-grid room-number">
+                            <%= "Room#{room_number}" %>
+                        </div>
+                        <div class="room-grid make-button btn btn-light">
+                            <%= link_to "Make", action: "index", command: "/make #{room_number}" %>
+                        </div>
+                        <div class="room-grid join-button btn btn-light">
+                            <%= link_to "Join", action: "index", command: "/join #{room_number}" %>
+                        </div>
+                        <% for player_number in (1..6) do %>
+                            <% if player_number%2 == 1 %>
+                                <div class="room-grid player-odd-number">
+                                </div>
+                            <% else %>
+                                <div class="room-grid player-even-number">
+                                </div>                                
+                            <% end %>
+                        <% end %>
                     </div>
                 <% end %>
             </div>
-            <div class="container col-3">
-                One of three columns
+            <div class="container chat-container col-3">
+
             </div>
         </div>
-        <div class="row" id="wait-chat">
-            <div class="container col-12">
-                One of three columns
+        <div class="row chat-row">
+            <div class="container user-list-container col-12">
+
             </div>
         </div>
     </div>
-
 </body>

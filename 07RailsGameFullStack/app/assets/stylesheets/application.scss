@@ -41,28 +41,159 @@ body{
 .container{
 height: 100%;
 align-content: center;
-
+border: none;
 }
-#waiting{
+
+
+.waiting-container{
     color: black;
     background: white;
 }
-#waiting div{
-    border: solid 0.1px black;
+.waiting-container div{
+    // border: solid 0.1px black;
     padding: 0;
 }
 
-#room-list{
+.room-and-user-row{
     height: 70%;
 }
-#wait-chat{
+.chat-row{
     height: 30%;
     overflow-y: auto;
 }
-.game-room{
+.room-container{
+    border: solid 5px blue;
     height: 20%;
     width: 50%;
 }
+.room-grid{
+    margin: 0;
+    height: 33.3%;
+    width: 33.3%;
+    border: solid 2px black;
+    box-shadow: 2px 2px black;
+}
+
+.player-odd-number{
+    background: orange;
+}
+.player-even-number{
+    background: yellow;
+}
+.room-number{
+    background: black;
+    color: white;
+}
+.make-button a, .join-button a{
+    color: black;
+}
+.user-list-container, .chat-container{
+    border: solid 1px black;
+    background: white;
+}
+
+
+.game-controll-container{
+    color: black;
+    background: white;
+}
+.game-controll-container div{
+    margin: 0;
+    padding: 0;
+}
+
+.game-row{
+    height: 100%;
+}
+.game-map-container{
+    background-size: 100% 100%;
+    background-image: url(asset_path('board.jpg'));
+    background-repeat: no-repeat;
+    padding: 0;
+    color: white;
+    height: 100%;
+    width: 100%;
+}
+
+.dummy-grid-long{
+    color: white;
+    background-color: rgba(0,0,0,0);
+    height: 11.2%;
+    width: 16.75%;
+}
+.dummy-grid-short{
+    display: inline;
+    color: white;
+    background: none;
+    height: 11.2%;
+    width: 9.4%;
+}
+.grid-button{
+    background-color: rgba(0,0,0,0); /* Green */
+    border: none;
+    padding: 50%;
+    color: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1px;
+    height: 100%;
+    cursor: pointer;
+}
+.map-grid{
+    color: white;
+    background: none;
+    height: 11.2%;
+    width: 9.4%;
+}
+.chat-form-row{
+    height: calc(100% - 30px);
+}
+.game-chat-row{
+    height: calc(100% - 30px);
+}
+.chat-controll-row{
+    height: 30px;
+}
+.game-controll-row{
+    height: 30px;
+    width: 100%;
+}
+
+.chat-window-container{
+    border: solid 1px black;
+}
+.controll-container{
+    background: white;
+    border: solid 1px black;
+}
+.chat-controll-container{
+    border: solid 1px black;
+}
+.room-controll-container{
+    border: solid 1px black;
+    width: 33.3%;
+    height: 30px;
+}
+
+.chat-messages{
+    height: 100%;
+    width: 100%;
+}
+
+.room-controll-button{
+    background-color: skyblue; /* Green */
+    border: none;    
+    color: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 3px;
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+}
+
 
 
 .card{
