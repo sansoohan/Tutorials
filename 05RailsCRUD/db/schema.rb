@@ -10,32 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_08_075324) do
-
-  create_table "clients", force: :cascade do |t|
-    t.integer "game_room_id"
-    t.string "user_id"
-    t.string "user_pass"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["game_room_id"], name: "index_clients_on_game_room_id"
-  end
-
-  create_table "players", force: :cascade do |t|
-    t.integer "game_room_id"
-    t.integer "ship_num"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["game_room_id"], name: "index_players_on_game_room_id"
-  end
-
-  create_table "ships", force: :cascade do |t|
-    t.integer "player_id"
-    t.integer "game_room_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["game_room_id"], name: "index_ships_on_game_room_id"
-    t.index ["player_id"], name: "index_ships_on_player_id"
-  end
+ActiveRecord::Schema.define(version: 0) do
 
 end

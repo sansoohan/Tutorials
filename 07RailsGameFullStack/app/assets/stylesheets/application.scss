@@ -129,7 +129,7 @@ border: none;
     width: 9.4%;
 }
 .grid-button{
-    background-color: rgba(0,0,0,0); /* Green */
+    background-color: rgba(0,0,0,0);
     border: none;
     padding: 50%;
     color: none;
@@ -169,9 +169,9 @@ border: none;
 }
 .chat-controll-container{
     border: solid 1px black;
+    font-size: 12px;
 }
 .room-controll-container{
-    border: solid 1px black;
     width: 33.3%;
     height: 30px;
 }
@@ -182,18 +182,30 @@ border: none;
 }
 
 .room-controll-button{
-    background-color: skyblue; /* Green */
+    background-color: skyblue;
     border: none;    
     color: none;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 3px;
+    font-size: 12px;
     height: 100%;
     width: 100%;
     cursor: pointer;
 }
 
+.make-button, .join-button{
+    background-color: #aaaaaa;
+    border: none;    
+    color: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+}
 
 
 .card{

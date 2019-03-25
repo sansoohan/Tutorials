@@ -61,8 +61,13 @@ Database Architect
 ```
 rake db:migrate VERSION=0
 rails d model user
-rails g model game_room players:has_many clients:has_many ships:has_many
-rails g model player client:has_one ships:has_many game_room:belongs_to
-rails g model client room_number:integer player:belongs_to game_room:gelongs_to
-rails g model ship ship_length:integer player:belongs_to client:belongs_to
+
+rails g model game_map \
+    MAPCOL:integer:7 \
+    MAPROW:integer:7 \
+    GamePlayer:belongs_to
+
+class GameMap < ApplicationRecord
+    has_many :map_spots, :class_name => "MapSpot", :dependent => :destroy
+end
 ```

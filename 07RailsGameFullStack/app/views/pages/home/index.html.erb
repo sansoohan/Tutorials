@@ -10,11 +10,11 @@
                         <div class="room-grid room-number">
                             <%= "Room#{room_number}" %>
                         </div>
-                        <div class="room-grid make-button btn btn-light">
-                            <%= link_to "Make", action: "index", command: "/make #{room_number}" %>
+                        <div class="room-grid">
+                            <%= button_to "Make", {action: "index", command: "/make #{room_number}"}, {method: "post", form_class: 'dummy-grid-short', class: 'make-button'} %>
                         </div>
-                        <div class="room-grid join-button btn btn-light">
-                            <%= link_to "Join", action: "index", command: "/join #{room_number}" %>
+                        <div class="room-grid">
+                            <%= button_to "Join", {action: "index", command: "/join #{room_number}"}, {method: "post", form_class: 'dummy-grid-short', class: 'join-button'} %>
                         </div>
                         <% for player_number in (1..6) do %>
                             <% if player_number%2 == 1 %>
@@ -22,7 +22,7 @@
                                 </div>
                             <% else %>
                                 <div class="room-grid player-even-number">
-                                </div>                                
+                                </div>
                             <% end %>
                         <% end %>
                     </div>

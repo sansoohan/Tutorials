@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     get 'room/index'
     post 'room/index'
     get 'home/index'
+    post 'home/index'
     get 'register/index'
     post 'register/index'
     get 'login/index'

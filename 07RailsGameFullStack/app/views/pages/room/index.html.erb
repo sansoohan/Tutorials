@@ -32,9 +32,8 @@
                 <div class="container game-controll-row d-flex flex-wrap">
                     
                     <%= button_to "Ready", {action: "index", chat_messages: params[:chat_messages], command: "/ready"}, {method: "post", form_class: 'container room-controll-container', class: 'room-controll-button'} %>
-
-                    <div class="container room-controll-container col-4"></div>
-                    <div class="container room-controll-container col-4"></div>
+                    <%= button_to "Start", {action: "index", chat_messages: params[:chat_messages], command: "/start"}, {method: "post", form_class: 'container room-controll-container', class: 'room-controll-button'} %>
+                    <%= button_to "Leave", {action: "index", command: "/leave"}, {method: "post", form_class: 'container room-controll-container', class: 'room-controll-button'} %>
                 </div>
             </div>
         </div>
