@@ -26,14 +26,14 @@ Some Table <strong>has_many</strong> tables. tables <strong>belongs_to</strong> 
 Some Table <strong>has_one</strong> table. table <strong>belongs_to</strong> Some Table<br>
 <br>
 Cascading<br>
-You need to destroy Child Table when Parent Table
+You need to destroy Child Table when Parent Table destoried<br>
 <strong>:dependent => :destroy</strong><br>
 <br>
 Null Reference<br>
 You need to enable null true for foreign key(id), or you will get database null false error.<br>
 <strong>:optional => true</strong><br>
-
-
+<br>
+Analyze these code<br>
 ```
 rails g model game_map \
     MAPCOL:integer \
@@ -100,3 +100,23 @@ end
 
 rake db:migrate
 ```
+
+Logic inside of Model
+---------------------------
+Bring Your Logic And Paste it inside the model.<br>
+
+Finish the Controller
+---------------------------
+Replace Mock-up Data to Database data.<br>
+
+Refactoring UI
+------------------
+Make UI Better and remove some UI that is not matched.<br>
+
+Refactoring Structure
+------------------------
+Make Code beautiful.<br>
+The more patch work you do, the more ugly code come out.<br>
+You need to clean your room sometimes.<br>
+If you think it is really hard to do something with your code, that is the time you need to refactoring.<br>
+This job is a sort of Version Up.<br>
