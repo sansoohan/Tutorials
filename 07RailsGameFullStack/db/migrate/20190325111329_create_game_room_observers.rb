@@ -5,7 +5,6 @@ class CreateGameRoomObservers < ActiveRecord::Migration[5.2]
       t.integer :shipLength
       t.integer :playerTurn
       t.integer :roomNumber
-      t.belongs_to :gameClient, foreign_key: true
 
       t.timestamps
     end

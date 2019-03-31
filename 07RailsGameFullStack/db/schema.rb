@@ -17,12 +17,10 @@ ActiveRecord::Schema.define(version: 2019_03_25_112126) do
     t.boolean "isRoomMaster"
     t.boolean "isReady"
     t.integer "roomNumber"
-    t.integer "game_room_bserver_id"
-    t.integer "game_player_id"
+    t.integer "game_room_observer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["game_player_id"], name: "index_game_clients_on_game_player_id"
-    t.index ["game_room_bserver_id"], name: "index_game_clients_on_game_room_bserver_id"
+    t.index ["game_room_observer_id"], name: "index_game_clients_on_game_room_observer_id"
   end
 
   create_table "game_maps", force: :cascade do |t|
@@ -48,21 +46,17 @@ ActiveRecord::Schema.define(version: 2019_03_25_112126) do
     t.integer "shipLength"
     t.integer "playerTurn"
     t.integer "roomNumber"
-    t.integer "gameClient_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["gameClient_id"], name: "index_game_room_observers_on_gameClient_id"
   end
 
   create_table "game_ships", force: :cascade do |t|
     t.integer "MAPSIZE"
     t.integer "shipLength"
-    t.integer "game_room_bserver_id"
     t.integer "game_player_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["game_player_id"], name: "index_game_ships_on_game_player_id"
-    t.index ["game_room_bserver_id"], name: "index_game_ships_on_game_room_bserver_id"
   end
 
   create_table "map_spots", force: :cascade do |t|
@@ -74,8 +68,8 @@ ActiveRecord::Schema.define(version: 2019_03_25_112126) do
   end
 
   create_table "ship_positions", force: :cascade do |t|
-    t.integer "posX"
-    t.integer "posY"
+    t.integer "X"
+    t.integer "Y"
     t.integer "game_ship_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
