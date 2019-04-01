@@ -9,8 +9,6 @@ class GameMap < ApplicationRecord
         self.map_spots.push(mapArray)
     end
 
-    
-
     def getPosition(row, col)
         self.map_spots[row*7 + col].flag
     end
