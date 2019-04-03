@@ -2,7 +2,7 @@ x, *y = *[1,2,3]
 p x, y
 
 def hoge (x, y, *params)
-    p x, y, params    
+    p x, y, *params
 end
 
 puts ""
@@ -30,3 +30,9 @@ hoge2(x:1, z:3)
 hoge2(x:1, y:10, z:3)
 hoge2(x:1, y:10, z:3, k:7)
 puts ""
+
+
+def tag(name, &block)
+    puts "<#{name}>#{block.call}</#{name}>"
+end
+tag(:p) {"Hello, World."}

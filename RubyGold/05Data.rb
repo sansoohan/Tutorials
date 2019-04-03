@@ -1,13 +1,16 @@
 require "yaml"
-
-dir = << EOY
+require "json"
+dir = <<EOY
 file1:
     name: app.rb
     data: ruby
 EOY
-
 p YAML.load(dir)
 
+h = {a: 1, b: 2}
+puts JSON.dump(h)
+
+p $LOAD_PATH
 
 someArray = []
 someArray << 1
