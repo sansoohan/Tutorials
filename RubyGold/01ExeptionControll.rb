@@ -1,3 +1,24 @@
+```
+Exception #最上位
+  |--NoMemoryError
+  |--ScriptError
+  |    |--LoadError
+  |    |--SyntaxError
+  |
+  |--StandardError #独自例外クラスを生成する際に継承を推奨されているクラス
+  |   |--ArgumentError
+  |   |--NameError
+  |   |    |--NoMethodError
+  |   |
+  |   |
+  |   |--RuntimeError
+  |   |--TypeError
+  |   |--ZeroDivisionError
+  |
+  |--SystemExit
+  |--SystemStackError
+```
+
 class PersonError < StandardError;  end
     class DesignerError < PersonError; end
     class ProgrammerError < PersonError; end

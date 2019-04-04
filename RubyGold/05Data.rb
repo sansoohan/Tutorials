@@ -1,21 +1,52 @@
 require "yaml"
-require "json"
+
 dir = <<EOY
 file1:
     name: app.rb
     data: ruby
 EOY
+
 p YAML.load(dir)
 
-h = {a: 1, b: 2}
-puts JSON.dump(h)
-
-p $LOAD_PATH
 
 someArray = []
 someArray << 1
 someArray.push(2)
 p someArray
+
+readOnlyArray = [1,2,3].freeze
+begin
+    readOnlyArray.push(4)
+    p readOnlyArray
+rescue => exception
+    puts "Can't push"
+end
+
+begin
+    readOnlyArray << 4
+    p readOnlyArray
+rescue => exception
+    puts "Can't <<"
+end
+
+begin
+    readOnlyArray += [4]
+    p readOnlyArray
+rescue => exception
+    puts "Can't +="
+end
+
+readOnlyArray += [4,5]
+
+
+
+p readOnlyArray
+readOnlyArray[4] = 10
+readOnlyArray[1] = 20
+p readOnlyArray[1]
+p readOnlyArray[4]
+
+
 
 %r|(http://www(¥.)(.*)/)| =~ "http://www.abc.com/"
 p $0, $1, $2, $3
@@ -35,9 +66,6 @@ p alphabet
 p "a".next!
 p "abz9".next!
 p "abz9".next!
-
-
-
 
 
 
