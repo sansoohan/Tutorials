@@ -18,7 +18,24 @@ class Cls2 < Cls1
 end
 
 Cls2.new.foo
+puts ""
+class Cls2
+    remove_method :foo # undef
+end
+Cls2.new.foo
 
+class Cls1
+    undef_method :foo
+end
+
+begin
+    Cls2.new.foo    
+rescue => exception
+    puts "All of the foo methods are deleted"
+end
+
+
+puts ""
 module M1
 end
 module M2
