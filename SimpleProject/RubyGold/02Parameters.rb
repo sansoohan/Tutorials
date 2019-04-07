@@ -36,3 +36,19 @@ def tag(name, &block)
     puts "<#{name}>#{block.call}</#{name}>"
 end
 tag(:p) {"Hello, World."}
+tag(:p) do "Hello, World." end
+tag(:p, & -> {"Hello, World."})
+
+
+def tag(name)
+    puts "<#{name}>#{yield}</#{name}>"
+end
+tag(:p) {
+    "Hello, World."
+}
+tag(:p) do
+    "Hello, World."
+end
+tag(:p, & -> {
+    "Hello, World."
+})

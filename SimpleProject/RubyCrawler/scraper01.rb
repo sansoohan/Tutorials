@@ -3,7 +3,8 @@ require 'httparty'
 require 'byebug'
 
 def scraper
-    url = "http://friendlibrary.ga"
+    # url = "http://friendlibrary.ga"
+    url = "https://www.italist.com"
     unparsed_page = HTTParty.get(url)
     parsed_page = Nokogiri::HTML(unparsed_page)
     byebug
