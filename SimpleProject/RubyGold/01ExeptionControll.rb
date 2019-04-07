@@ -1,32 +1,28 @@
-```
-Exception #最上位
-  |--NoMemoryError
-  |--ScriptError
-  |    |--LoadError
-  |    |--SyntaxError
-  |
-  |--StandardError #独自例外クラスを生成する際に継承を推奨されているクラス
-  |   |--ArgumentError
-  |   |--NameError
-  |   |    |--NoMethodError
-  |   |
-  |   |
-  |   |--RuntimeError
-  |   |--TypeError
-  |   |--ZeroDivisionError
-  |
-  |--SystemExit
-  |--SystemStackError
-```
 
-class PersonError < StandardError;  end
-    class DesignerError < PersonError; end
-    class ProgrammerError < PersonError; end
+class Exception; end
+    class SystemExit < Exception; end
+    class SystemStackError < Exception; end
+    class NoMemoryError < Exception; end
+    class ScriptError < Exception; end
+        class LoadError < ScriptError; end
+        class SyntaxError < ScriptError; end
+    class StandardError < Exception; end
+        class RuntimeError < StandardError; end
+        class TypeError < StandardError; end
+        class ZeroDivisionError < StandardError; end
+        class ArgumentError < StandardError; end
+        class NameError < StandardError; end
+            class NoMethodError < NameError; end
 
-class ComputerError < StandardError; end
-    class MemoryError < ComputerError; end
-    class CPUError < ComputerError; end
+class StandardError; end
+    class PersonError < StandardError;  end
+        class DesignerError < PersonError; end
+        class ProgrammerError < PersonError; end
+    class ComputerError < StandardError; end
+        class MemoryError < ComputerError; end
+        class CPUError < ComputerError; end
 
+p ZeroDivisionError.superclass
 
 # PersonError Group
 whoMessedUp = "programmer"

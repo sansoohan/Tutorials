@@ -20,7 +20,7 @@ end
 Cls2.new.foo
 puts ""
 class Cls2
-    remove_method :foo # undef
+    remove_method :foo
 end
 Cls2.new.foo
 
@@ -48,6 +48,7 @@ class C2 < C1
     include M2
 end
 
+# refine outside of class: using module
 class C
     def hoge
         puts "hoge"
@@ -72,4 +73,93 @@ rescue => exception
 end
 
 puts ""
+# refine inside of class : class << self
+class Dog
+    def name
+        "Dog"
+    end
+    class << self
+        def name # without undef, same name of def is ignored
+            "chiwawa"
+        end
+    end 
+end
+dog3 = Dog.new
+p dog3.name
+puts ""
+module ModuleFoo
+    def foo 
+        "module foo" 
+    end 
+end 
+class Foo 
+    def foo 
+        "foo" 
+    end 
+end 
 
+class Bar < Foo 
+    include ModuleFoo
+    def foo 
+        super + "bar" 
+    end 
+    alias bar foo 
+    undef foo
+end 
+puts Bar.new.bar
+puts Foo.new.foo
+
+=begin
+[Class4]  (prepend)
+ [Mod3]  <====|
+ [Mod2]  <====|
+[Class1]  (include)
+=end
+module Mod3
+    def say
+        p 'mod3'
+        super
+    end
+end
+module Mod2
+    def say
+        p 'mod2'
+        super
+    end
+end
+class Class4
+    prepend Mod3
+    def say
+        p 'class4'
+    end
+end
+class Class1 < Class4
+    include Mod2
+    def say
+        p 'class1'
+        super
+    end
+end
+something = Class1.new
+something.say
+p Class1.ancestors
+
+somethingCopied = something.clone
+puts somethingCopied.equal?(something)
+
+somethingDuplicated = something.dup
+puts somethingDuplicated.equal?(something)
+
+module M
+    def hoge
+        puts "hoge M"
+    end
+end
+
+class A
+    prepend M
+    def hoge
+        puts "hoge A"
+    end
+end
+A.new.hoge # It seems A but, it is acting like M because of prepend.

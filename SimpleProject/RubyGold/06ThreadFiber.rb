@@ -18,8 +18,8 @@ t1 = Thread.new do
         Thread.current.stop
     end
 end
-t.run
-t.wakeup
+t1.run
+t1.wakeup
 
 t2 = Thread.start do
     while 1 do
@@ -30,3 +30,9 @@ end
 
 t1.kill
 t2.kill
+
+# ruby -d 06ThreadFiber.rb
+Thread.start do
+    raise ThreadError
+end
+sleep
