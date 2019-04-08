@@ -5,38 +5,33 @@ Several Branch
 -------------------------
 Having Several Branch, You can see history of each branch easy.<br>
 Without Several Branch, It is hard to find the commits you want.<br>
+It is good for working each other, but it is also good to see the change exactly only what you want.<br>
 <br>
 Show Branch Status<br>
 ```
 git branch
 ```
-<br>
 Make New Branch<br>
 ```
 git branch folder1
 ```
-<br>
 Move to Target Branch<br>
 ```
 git checkout folder1
 ```
-<br>
 Check All Branches Merged Or Not<br>
 ```
 git log
 ```
-<br>
 Merge Branch to Target Branch<br>
 ```
 git checkout master
 git merge folder1
 ```
-<br>
 Remove Old Branch<br>
 ```
 git branch -d folder
 ```
-<br>
 
 Several Repository
 ------------------------------
@@ -48,22 +43,18 @@ Add New Repository<br>
 ```
 git add newrepo [url]
 ```
-<br>
 Show All Repository<br>
 ```
 git remote -v
 ```
-<br>
 Remove Old Repository<br>
 ```
 git remove newrepo
 ```
-<br>
 Rename A Repository<br>
 ```
 git rename newrepo activerepo
 ```
-<br>
 
 <a href="https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line">Two Factor Athentication</a>
 -------------------------------
