@@ -71,3 +71,12 @@ class << dog2
 end
 p dog2.name
 
+
+class Object
+    class << self
+        def name
+            "Bull"
+        end
+    end
+end 
+ Object.name
