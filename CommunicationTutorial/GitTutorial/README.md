@@ -66,7 +66,11 @@ How to sign out in command line.
 -------------------------------
 If you have several git account, you might use this command someday.<br>
 You can excute these code for signing out on git command line.<br>
-<br>
+
+save-password-and-id<br>
+```
+git config credential.helper store
+```
 git-logout<br>
 ```
 #!/bin/bash
