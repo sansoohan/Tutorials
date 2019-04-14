@@ -79,4 +79,4 @@ class Object
         end
     end
 end 
- Object.name
+Object.name

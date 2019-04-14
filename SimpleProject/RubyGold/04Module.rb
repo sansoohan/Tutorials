@@ -53,10 +53,12 @@ class C
     def hoge
         puts "hoge"
     end
+    def roge
+        puts "hoge" 
+    end
 end
 module M
     refine C do
-        undef hoge
         def roge
             puts "roge"
         end
@@ -66,27 +68,9 @@ c = C.new
 c.hoge
 using M
 c.roge
-begin
-    c.hoge    
-rescue => exception
-    puts "There is no hoge anymore."
-end
+c.hoge
+puts ""
 
-puts ""
-# refine inside of class : class << self
-class Dog
-    def name
-        "Dog"
-    end
-    class << self
-        def name # without undef, same name of def is ignored
-            "chiwawa"
-        end
-    end 
-end
-dog3 = Dog.new
-p dog3.name
-puts ""
 module ModuleFoo
     def foo 
         "module foo" 
@@ -144,11 +128,11 @@ something = Class1.new
 something.say
 p Class1.ancestors
 
-somethingCopied = something.clone
-puts somethingCopied.equal?(something)
+somethingCopied = something.freeze.clone
+puts somethingCopied.frozen?
 
-somethingDuplicated = something.dup
-puts somethingDuplicated.equal?(something)
+somethingDuplicated = something.freeze.dup
+puts somethingDuplicated.frozen?
 
 module M
     def hoge

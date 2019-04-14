@@ -1,4 +1,3 @@
-
 class Exception; end
     class SystemExit < Exception; end
     class SystemStackError < Exception; end
@@ -7,6 +6,7 @@ class Exception; end
         class LoadError < ScriptError; end
         class SyntaxError < ScriptError; end
     class StandardError < Exception; end
+        class IndexError < StandardError; end
         class RuntimeError < StandardError; end
         class TypeError < StandardError; end
         class ZeroDivisionError < StandardError; end
@@ -57,19 +57,52 @@ rescue => ex
     puts ex.class
 end
 
+
 # Ignoring other Error Group
-begin
-    raise ProgrammerError
-rescue ComputerError => ex
-    puts ex.class
-rescue MemoryError => ex
-    puts ex.class
-rescue CPUError => ex
-    puts ex.class
-rescue => ex
-    puts "ComputerError is ignored"
-    puts "MemoryError is ignored"
-    puts "CPUError is ignored"
-rescue ProgrammerError => ex
-    puts "This line is executed"
+def makeError(errorType)
+    begin
+        if errorType == nil
+            
+        else
+            raise errorType
+        end
+    rescue ComputerError => ex
+        puts ex.class
+    rescue MemoryError => ex
+        puts ex.class
+    rescue CPUError => ex
+        puts ex.class
+    rescue TypeError => exception
+        puts "TypeError : #{exception.message}"
+    rescue
+        puts "ComputerError is ignored"
+        puts "MemoryError is ignored"
+        puts "CPUError is ignored"
+    rescue ProgrammerError => ex
+        puts "This line is executed"
+    rescue Exception => ex 
+        puts ex
+    else
+        puts "No Error"
+    # this excuted after rescue.
+    ensure
+        puts "Error Checked. Next method should be here."
+        puts ""
+    end
 end
+
+def makeTypeError
+    begin
+        1+"2"    
+    rescue TypeError => exception
+        return exception
+    end
+end
+
+puts ""
+makeError(ProgrammerError)
+makeError(ComputerError)
+makeError(SystemExit)
+makeError(nil)
+makeError(makeTypeError)
+

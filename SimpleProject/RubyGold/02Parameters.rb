@@ -31,6 +31,12 @@ hoge2(x:1, y:10, z:3)
 hoge2(x:1, y:10, z:3, k:7)
 puts ""
 
+def hoge3(x:, y:2 , **params)
+    p x
+    p y
+    p params
+end
+hoge3(x:1, z:10000)
 
 def tag(name, &block)
     puts "<#{name}>#{block.call}</#{name}>"

@@ -1,9 +1,9 @@
 require "yaml"
-dir = <<EOY
+dir = <<-EOY
 file1:
     name: app.rb
     data: ruby
-EOY
+    EOY
 p YAML.load(dir)
 
 require 'json'
