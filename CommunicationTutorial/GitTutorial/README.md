@@ -80,3 +80,15 @@ echo -e "host=github.com\nprotocol=https\n" | git credential-osxkeychain erase
 git config --unset-all --global user.name
 git config --unset-all --global user.email
 ```
+
+How to roll back?
+------------------------------
+If you commited some worng document, you can roll back.<br>
+```
+git reset --hard HEAD^
+```
+If you pushed some worng document, you can roll back.<br>
+```
+git reset --hard HEAD^
+git push -f
+```
