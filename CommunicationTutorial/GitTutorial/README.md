@@ -92,3 +92,24 @@ If you pushed some worng document, you can roll back.<br>
 git reset --hard HEAD^
 git push -f
 ```
+
+Code Review And Pull Request
+------------------------------
+To avoid merge collision don't upload into master branch directly<br>
+upload into branch first<br>
+```
+git checkout communication
+git add *
+git commit -m "what is changed"
+git push origin communication
+```
+
+
+
+upload again<br>
+```
+git checkout communication
+git add *
+git commit -m "added some more"
+git push origin communication
+```
