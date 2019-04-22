@@ -103,14 +103,14 @@ git add *
 git commit -m "what is changed"
 git push origin communication
 ```
-<img src="resource/01newpullrequest.png>"><br>
-<img src="resource/02selectbranch.png>"><br>
-<img src="resource/03createpullrequest.png>"><br>
-<img src="resource/04openpullrequest.png>"><br>
-<img src="resource/04requestreview.png>"><br>
-<img src="resource/05gotrequestreview.png>"><br>
-<img src="resource/06review.png>"><br>
-<img src="resource/07reviewdone.png>"><br>
+<img src="resource/01newpullrequest.png"><br>
+<img src="resource/02selectbranch.png"><br>
+<img src="resource/03createpullrequest.png"><br>
+<img src="resource/04openpullrequest.png"><br>
+<img src="resource/04requestreview.png"><br>
+<img src="resource/05gotrequestreview.png"><br>
+<img src="resource/06review.png"><br>
+<img src="resource/07reviewdone.png"><br>
 upload again<br>
 ```
 git checkout communication
