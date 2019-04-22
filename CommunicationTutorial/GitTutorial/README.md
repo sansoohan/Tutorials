@@ -103,13 +103,55 @@ git add *
 git commit -m "what is changed"
 git push origin communication
 ```
-
-
-
+<img src="resource/01newpullrequest.png>"><br>
+<img src="resource/02selectbranch.png>"><br>
+<img src="resource/03createpullrequest.png>"><br>
+<img src="resource/04openpullrequest.png>"><br>
+<img src="resource/04requestreview.png>"><br>
+<img src="resource/05gotrequestreview.png>"><br>
+<img src="resource/06review.png>"><br>
+<img src="resource/07reviewdone.png>"><br>
 upload again<br>
 ```
 git checkout communication
 git add *
 git commit -m "added some more"
 git push origin communication
+```
+<img src="resource/08requestreview.png>"><br>
+<img src="resource/09commit.png>"><br>
+<img src="resource/10reviewdone.png>"><br>
+backup your project<br>
+```
+mkdir backup
+mv yourproject backup/yourproject
+```
+clone your project again and change your branch<br>
+```
+git clone https://github.com/projectMasterGithubUserName/yourproject
+cd yourproject
+git checkout communication
+```
+delete your local commit before you commit<br>
+```
+git reset --hard HEAD^
+```
+delete your github commit before you pushed<br>
+```
+git push -f
+```
+delete your project you cloned<br>
+```
+cd ..
+rm -rf yourproject
+```
+bring your project from backup directory and remove what you did wrong<br>
+```
+mv backup/yourproject yourproject
+```
+upload again<br>
+```
+git add *
+git commit -m "I removed what i did wrong and added more."
+git push origin communication.
 ```
