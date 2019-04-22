@@ -118,9 +118,9 @@ git add *
 git commit -m "added some more"
 git push origin communication
 ```
-<img src="resource/08requestreview.png>"><br>
-<img src="resource/09commit.png>"><br>
-<img src="resource/10reviewdone.png>"><br>
+<img src="resource/08requestreview.png"><br>
+<img src="resource/09commit.png"><br>
+<img src="resource/10reviewdone.png"><br>
 backup your project<br>
 ```
 mkdir backup
