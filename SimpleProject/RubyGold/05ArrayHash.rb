@@ -56,43 +56,6 @@ p "a".next!
 p "abz9".next!
 p "abz9".next!
 
-class DefineMethodWithString
-    {:cat => 'Meow', :dog => 'Wolf'}.each do |name, message|
-        define_method(name){"#{name} says #{message}"}
-    end
-end
-p DefineMethodWithString.new.cat
-
-puts ""
-class HashMethodize
-    def initialize(hash)
-        if hash.class == Hash
-            hash.each do |name, message|
-                self.class.send(:define_method, name){"#{name} says #{message}"}
-            end
-        end
-    end
-end
-animalData = {:cat => 'Meow', :dog => 'Wolf'}
-animal = HashMethodize.new(animalData)
-p animal.cat
-p animal.dog
-
-class ArrayMethodize
-    def initialize(array)
-        if array.class == Array
-            array.each do |name|
-                self.class.send(:define_method, name){"#{name}"}
-            end
-        end
-    end
-end
-fruitData = ['apple','banana']
-fruit = ArrayMethodize.new(fruitData)
-p fruit.apple
-p fruit.banana
-p fruit.respond_to?(:apple)
-
 class MyNum
     attr :num
     def initialize(num)
@@ -111,3 +74,18 @@ class MyNum
 end
 p numbers.sort(& -> (a,b){a.num<=>b.num})
 p numbers.sort(& -> (a,b){a.num<=>b.num}).map{|n| n.num}
+
+# class static method
+p Array.methods.grep(/^re/)
+# class instance method
+p Array.instance_methods.grep(/^re/)
+p [].methods.grep(/^re/)
+# ignore superclass method
+p Array.instance_methods(false).grep(/^re/)
+p MyNum.new(1).instance_variables
+
+
+
+p Module.instance_methods(false)
+p Class.instance_methods(false)
+p Kernel.private_instance_methods.grep(/^sp/)

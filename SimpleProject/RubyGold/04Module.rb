@@ -1,107 +1,21 @@
-module Mod
-    def foo
-        puts "Mod"
-    end
-end
-class Cls1
-    include Mod
-    def foo
-        puts "Cls1"
-        super
-    end
-end
-class Cls2 < Cls1
-    def foo
-        puts "Cls2"
-        super
-    end
-end
-
-Cls2.new.foo
-puts ""
-class Cls2
-    remove_method :foo
-end
-Cls2.new.foo
-
-class Cls1
-    undef_method :foo
-end
-
-begin
-    Cls2.new.foo    
-rescue => exception
-    puts "All of the foo methods are deleted"
-end
-
-
-puts ""
-module M1
-end
-module M2
-end
-class C1
-    include M1
-end
-class C2 < C1
-    p self.ancestors
-    include M2
-end
-
-# refine outside of class: using module
-class C
-    def hoge
-        puts "hoge"
-    end
-    def roge
-        puts "hoge" 
-    end
-end
-module M
-    refine C do
-        def roge
-            puts "roge"
-        end
-    end
-end
-c = C.new
-c.hoge
-using M
-c.roge
-c.hoge
-puts ""
-
-module ModuleFoo
-    def foo 
-        "module foo" 
-    end 
-end 
-class Foo 
-    def foo 
-        "foo" 
-    end 
-end 
-
-class Bar < Foo 
-    include ModuleFoo
-    def foo 
-        super + "bar" 
-    end 
-    alias bar foo 
-    undef foo
-end 
-puts Bar.new.bar
-puts Foo.new.foo
-
 =begin
-[Class4]  (prepend)
- [Mod3]  <====|
- [Mod2]  <====|
-[Class1]  (include)
+[Class6]  
+ [Mod5]   <====|(prepend)
+ [Mod4]   <====|(include)
+[Class3]
+ [Mod2]   <====|(prepend)
+[Refine1] <====|(using)
+[static0] <====|(def self.function)
 =end
-module Mod3
+module Mod5
     def say
-        p 'mod3'
+        p 'mod5'
+        super
+    end
+end
+module Mod4
+    def say
+        p 'mod4'
         super
     end
 end
@@ -111,22 +25,80 @@ module Mod2
         super
     end
 end
-class Class4
-    prepend Mod3
+class Class6
+    prepend Mod5
     def say
-        p 'class4'
+        p 'class6'
     end
 end
-class Class1 < Class4
-    include Mod2
+class Class3 < Class6
+    include Mod4
+    prepend Mod2
     def say
-        p 'class1'
+        p 'class3'
         super
     end
+    # refine and static method is not working inside the class
+    # prepend still work inside the class
+    def saysay
+        p self.say 
+        super
+    end 
 end
-something = Class1.new
+module Refine1
+    refine Class3 do
+        def say
+            p 'refine1'
+            super
+        end
+    end
+end
+module Refine0
+    refine Class3 do
+        def say
+            p 'refine1'
+            super
+        end
+    end
+end
+
+something = Class3.new
+p Class3.ancestors
 something.say
-p Class1.ancestors
+
+using Refine1
+p Class3.ancestors
+something.say
+
+def something.say
+    p 'static0'
+    super
+end
+p Class3.ancestors
+something.say
+using Refine1
+
+p Class3.ancestors
+p Class3.new.saysay
+
+=begin
+[M2]     <====|(prepend)
+[M3]     
+[M1]     <====|(include)
+=end
+module M1; end
+module M2
+    include M1 # this is not working
+end
+
+module M3
+    prepend M1
+    include M2
+end
+
+p M3.ancestors
+
+
 
 somethingCopied = something.freeze.clone
 puts somethingCopied.frozen?
@@ -134,16 +106,33 @@ puts somethingCopied.frozen?
 somethingDuplicated = something.freeze.dup
 puts somethingDuplicated.frozen?
 
-module M
-    def hoge
-        puts "hoge M"
+def foo
+    p "?"
+end 
+class VeryHard1
+    foo
+    def go
+        foo
+    end
+    def foo
+        p "foo"
     end
 end
+VeryHard1.new.foo
+class VeryHard2
+    attr_accessor :foo
+    foo # this is not used as instance variable
+    def foo= x
+        foo = x
+    end
+    # def foo # because of this attr :foo is removed
+    #     p "foo"
+    # end            
+end
+hard = VeryHard2.new
+hard.foo = 3
+p hard.foo
 
-class A
-    prepend M
-    def hoge
-        puts "hoge A"
-    end
-end
-A.new.hoge # It seems A but, it is acting like M because of prepend.
+
+
+

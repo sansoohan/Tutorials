@@ -1,5 +1,15 @@
 module M
     CONST = "Hello"
+    K = 1
+    class C
+        K = 2
+        K2 = 3
+        p C.constants
+        p M.constants
+        p ::M::C::K
+        p M::C::K
+    end
+    
     def builder
         "builder is good"
     end
@@ -8,6 +18,8 @@ module M
         "builder for M"
     end
 end
+
+
 
 class Static
     @@objectCount = 0

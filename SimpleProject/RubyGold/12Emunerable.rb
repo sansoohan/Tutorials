@@ -4,7 +4,9 @@ class Menu
         @array = array
     end
     def each
-        @array.each do |item|
+        #@array.each |item| do
+        #@array.enum_for.map do |item| # This is important!
+        @array.enum_for.map do |item, i|
             yield item
         end
     end
@@ -12,15 +14,17 @@ end
 menu_option = Menu.new(["pizza","spaghetti","salad","water","bread"])
 p menu_option.find{|item| item = "pizza"}
 p menu_option.select{|item| item.size <= 5 }
-p menu_option.reject{|item| item.size <=5}
+p menu_option.reject{|item| item.size > 5}
 p menu_option.first
 p menu_option.take(2)
 p menu_option.drop(2)
 p menu_option.min
 p menu_option.max
 p menu_option.sort
-p menu_option.sort.reverse_each.map{|item| item}
-p menu_option.all? {|item| item.size >= 5}
+p menu_option.sort.reverse_each.map{|item| item} # This is important!
+p menu_option.sort.reverse.each.map{|item| item} # This is important!
+p menu_option.all? {|item| item.size >= 5} # This is important!
+p menu_option.any? {|item| item.size >= 10}
 p [1,2,3].all? {|num| num > 0 }
 p [1,2,3].any? {|num| num > 3 }
 
@@ -43,9 +47,8 @@ rescue => exception
     p "lambda has to have all parameters"
 end
 
-
-1.upto(3) do |i| p i end
 1.upto(3) { |i| p i }
+1.upto(3) do |i| p i end
 1.upto 3 do |i| p i end
 
 
@@ -80,3 +83,4 @@ p someArray(*[1,2,3]) # [1,2,3]
 p someArray(1,2,3)
 p [1,2,3]
 p *[1,2,3]
+
