@@ -18,13 +18,7 @@ rescue => exception
     puts "Can't <<"
 end
 
-begin
-    readOnlyArray += [4]
-    p readOnlyArray
-rescue => exception
-    puts "Can't +="
-end
-
+# Array + Array => New Array
 readOnlyArray += [4,5]
 
 
@@ -37,7 +31,7 @@ p readOnlyArray[4]
 
 
 
-%r|(http://www(¥.)(.*)/)| =~ "http://www.abc.com/"
+%r|(http://www(\.)(.*)/)| =~ "http://www.abc.com/"
 p $0, $1, $2, $3
 
 p [1,2,3].map{|x| x**2}
@@ -74,18 +68,3 @@ class MyNum
 end
 p numbers.sort(& -> (a,b){a.num<=>b.num})
 p numbers.sort(& -> (a,b){a.num<=>b.num}).map{|n| n.num}
-
-# class static method
-p Array.methods.grep(/^re/)
-# class instance method
-p Array.instance_methods.grep(/^re/)
-p [].methods.grep(/^re/)
-# ignore superclass method
-p Array.instance_methods(false).grep(/^re/)
-p MyNum.new(1).instance_variables
-
-
-
-p Module.instance_methods(false)
-p Class.instance_methods(false)
-p Kernel.private_instance_methods.grep(/^sp/)

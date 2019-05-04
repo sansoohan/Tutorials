@@ -9,17 +9,22 @@ module M
         p ::M::C::K
         p M::C::K
     end
-    
-    def builder
-        "builder is good"
-    end
-    module_function
-    def static_builder
-        "builder for M"
+end
+puts ::M::CONST
+
+
+
+module ExtendStatic
+    def setName(name)
+        @name=name
     end
 end
 
-
+module IncludeStatic
+    def getName
+        @name
+    end
+end
 
 class Static
     @@objectCount = 0
@@ -33,34 +38,25 @@ class Static
         @@objectCount
     end
     class << self
+        attr_reader :name
         def objectCount3
             @@objectCount
         end
+        prepend IncludeStatic
     end
-    extend M
+    extend ExtendStatic
 end
 
-puts Static.objectCount
-ob1 = Static.new
-ob2 = Static.new
-puts Static.objectCount
-puts Static.objectCount2
-puts Static.objectCount3
-puts ::M::CONST
-
-
+Static.setName('sansoo')
+p Static.name
+p Static.getName
+p Static.objectCount
+p Static.objectCount2
+p Static.objectCount3
 class ChildStatic < Static
     @@objectCount = 10
 end
-
 puts Static.objectCount
-puts Static.builder
-puts M.static_builder
-begin
-    Static.static_builder
-rescue NameError => exception
-    puts "static_builder is only for M"
-end
 
 # Object Static Function
 class Dog; end
@@ -83,12 +79,3 @@ class << dog2
 end
 p dog2.name
 
-
-class Object
-    class << self
-        def name
-            "Bull"
-        end
-    end
-end 
-Object.name
