@@ -1,0 +1,41 @@
+
+
+<body>
+    <div class="container game-container">
+        <div class="row game-row">
+            <div class="container game-map-container col-9 d-flex flex-wrap align-content-start">
+
+                <% for row in (-1..6) do %>
+                    <div class="dummy-grid-long"></div>
+                    <% for col in (0..6) do %>
+                        <%= button_to "", {action: "index", chat_messages: params[:chat_messages], command: "/attack #{row} #{col}"}, {method: "post", form_class: 'dummy-grid-short', class: 'grid-button'} %>
+                    <% end %>
+                    <div class="dummy-grid-long"></div>
+                <% end %>
+            </div>
+            <div class="container game-controll-container col-3">
+                
+                <%= form_tag("/pages/room/index", method: "post", class: "row chat-form-row") do %>
+                    <div class="row game-chat-row">
+                        <%# disabled: true %>
+                        <%= text_area_tag(:chat_messages, params[:chat_messages],class: "container chat-messages col-12", placeholder: "", cols:40) %>
+                    </div>
+                    <div class="row chat-controll-row">
+                        <div class=" col-9">
+                            <%= text_field_tag(:new_message, "" ,class: "container chat-controll-container", placeholder: "") %>
+                        </div>
+                        <div class=" col-3">
+                            <%= submit_tag("Send", class: "container chat-controll-container") %>
+                        </div>
+                    </div>
+                <% end %>
+                <div class="container game-controll-row d-flex flex-wrap">
+                    
+                    <%= button_to "Ready", {action: "index", chat_messages: params[:chat_messages], command: "/ready"}, {method: "post", form_class: 'container room-controll-container', class: 'room-controll-button'} %>
+                    <%= button_to "Start", {action: "index", chat_messages: params[:chat_messages], command: "/start"}, {method: "post", form_class: 'container room-controll-container', class: 'room-controll-button'} %>
+                    <%= button_to "Leave", {action: "index", command: "/leave"}, {method: "post", form_class: 'container room-controll-container', class: 'room-controll-button'} %>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
