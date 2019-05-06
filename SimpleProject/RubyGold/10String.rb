@@ -34,3 +34,7 @@ __END__
 Java Programing
 Ruby Programing
 C Programing
+
+
+%r|(http://www(\.)(.*)/)| =~ "http://www.abc.com/"
+p $0, $1, $2, $3

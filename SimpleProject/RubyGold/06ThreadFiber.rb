@@ -1,20 +1,20 @@
 f = Fiber.new do
     while 1 do
-    puts 'Hello1'
-    puts Fiber.yield
-    puts 'Hello4'
+        puts 'hello1'
+        puts Fiber.yield
+        puts 'hello4'
     end
-end 
+end
 
 f.resume
-f.resume("Hello2", "Hello3")
+f.resume('hello2', 'hello3')
 f.resume
 f.resume
 
-puts ""
+puts ''
 t1 = Thread.new do
     while 1 do
-        puts "Thread New Hello"
+        puts 'Thread New Hello'
         Thread.current.stop
     end
 end
@@ -23,19 +23,15 @@ t1.wakeup
 
 t2 = Thread.start do
     while 1 do
-        puts "Thread Start Hello"
+        puts 'Thread Start Hello'
         Thread.current.stop
     end
 end
-
 t1.kill
 t2.kill
 
-
-
 require 'concurrent'
-c1 = Concurrent::Promise.new{10}.then{|x| x * 2}.then{|result| result - 10 }.execute
-p c1.value
+p Concurrent::Promise.new{10}.then{|x| x*2}.then{|x| x*2}.execute.value
 
 class Crawler
     attr_accessor :nodeJS
@@ -54,7 +50,7 @@ class Crawler
             @url = url
             self
         end
-        def getBody
+        def setBody
             @body = @url*2
             self
         end
@@ -63,14 +59,11 @@ end
 crawler = Crawler.new
 node = crawler.visit('www.naver.com')
 .then{|nodeJS|
-    # while nodeJS.url.nil? do; end
-    nodeJS.getBody
+    nodeJS.setBody
 }
 .execute
 p node.value.body
 p crawler.nodeJS.body
-
-
 
 # ruby -d 06ThreadFiber.rb
 Thread.start do
