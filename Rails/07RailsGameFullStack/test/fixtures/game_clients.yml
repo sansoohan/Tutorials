@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  clientID: MyString
+  isRoomMaster: false
+  isReady: false
+  roomNumber: 1
+  game_room_bserver: one
+  game_player: one
+
+two:
+  clientID: MyString
+  isRoomMaster: false
+  isReady: false
+  roomNumber: 1
+  game_room_bserver: two
+  game_player: two

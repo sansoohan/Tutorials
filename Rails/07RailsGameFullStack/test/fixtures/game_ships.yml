@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  MAPSIZE: 1
+  shipLength: 1
+  game_room_bserver: one
+  game_player: one
+
+two:
+  MAPSIZE: 1
+  shipLength: 1
+  game_room_bserver: two
+  game_player: two
