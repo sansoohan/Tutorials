@@ -34,6 +34,7 @@ puts ""
 
 
 
+
 class DefineMethodWithString
     {:cat => 'Meow', :dog => 'Wolf'}.each do |name, message|
         define_method(name){"#{name} says #{message}"}
@@ -427,3 +428,37 @@ end
 
 def obj.my_singleton_mtehod; end
 p singleton_class.instance_methods.grep(/my_/)
+
+
+p Class.methods().grep(/eval/)
+
+
+
+
+
+
+class Human
+    attr_reader :name
+    alias original_name name  
+    def name
+        "Mr. " + original_name
+    end
+    def initialize(name)
+        @name = name
+    end
+end
+  
+human = Human.new("Andrew")
+puts human.name
+class Human
+    attr_reader :name   
+    def name
+        "Mr. " + @name
+    end
+    def initialize(name)
+        @name = name
+    end
+end
+    
+human = Human.new("Andrew")
+puts human.name

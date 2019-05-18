@@ -51,3 +51,88 @@ class MyNum
 end
 p numbers.sort{|a,b| a.num <=> b.num}
 p numbers.sort(& -> (a,b){a.num <=> b.num})
+
+
+
+CONST_LIST_A = ['001', '002', '003']
+begin
+  CONST_LIST_A.map{|id| id << 'hoge'}
+rescue
+end
+
+CONST_LIST_B = ['001', '002', '003'].freeze
+begin
+  CONST_LIST_B.map{|id| id << 'hoge'}
+rescue
+end
+
+CONST_LIST_C = ['001', '002', '003'].freeze
+begin
+  CONST_LIST_C.map!{|id| id << 'hoge'}
+rescue
+end
+
+CONST_LIST_D = ['001', '002', '003'].freeze
+begin
+  CONST_LIST_D.push('add')
+rescue
+end
+
+p CONST_LIST_A
+p CONST_LIST_B
+p CONST_LIST_C
+p CONST_LIST_D
+
+
+require('yaml')
+yamlArray = <<-Data
+- aaa
+-
+  - b1
+  -
+    - b3.1
+- ccc
+Data
+
+p YAML.load(yamlArray)
+
+yamlHash = <<-Data
+A: aaa
+B:
+  B1: b1
+  B2: b2
+C: c2
+Data
+p YAML.load(yamlHash)
+
+
+
+# Class Closure : Sharing variable
+module Closure
+    name = 'han' # 
+    Animal = Class.new do # class Animal
+        p name
+        def initialize(a)
+        @a = a
+        end
+        
+        def method1()
+        @a
+        end
+    end
+
+    Dog = Class.new(Animal) do # class Dog < Animal
+        p name
+        def initialize(a, b)
+        @b = b
+        super(a)
+        end
+        
+        def method2(c)
+        @a + @b + c
+        end
+    end
+    
+    dog = Dog.new("hello", " world")
+    dog.method2(" !!") #=> "hello world !!"
+end

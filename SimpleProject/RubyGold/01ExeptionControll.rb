@@ -106,3 +106,19 @@ makeError(SystemExit)
 makeError(nil)
 makeError(makeTypeError)
 
+
+
+
+def m
+    begin
+      1
+    rescue
+      2
+    else
+      3 # No Error -> return
+    ensure
+      4
+    end
+end
+  
+p m

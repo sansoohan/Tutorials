@@ -30,7 +30,23 @@ module Mod4
         super
     end
 end
+
+module ModExtraTree
+    def say
+        p 'ModExtraTree'
+        super
+    end
+end
+
 module Mod6
+    def self.append_features(include_class_name) # it is same as initialize
+        include_class_name.say_something = 'Class5'
+        super # call class5 initialize
+    end
+
+    def self.included(include_class_name) # relate with other module
+        include_class_name.include ModExtraTree
+    end
     def say
         p 'Mod6'
         super
@@ -38,10 +54,13 @@ module Mod6
 end
 
 class Class5 < Class8
+    class << self
+        attr_accessor :say_something
+    end
     include Mod6
     prepend Mod4
     def say
-        p 'Class5'
+        p self.class.say_something
         super
     end
 end
@@ -117,6 +136,21 @@ p M3.static_builder
 p M3.ancestors
 
 
+module M1;end
+module M2;end
+class C
+    include M1, M2
+end
+p C.ancestors
+class D
+    include M1
+    include M2
+end
+p D.ancestors
+
+
+
+
 class Menu
     include Enumerable
     def initialize(array)
@@ -146,3 +180,32 @@ p menu_option.all? {|item| item.size >= 5} # This is important!
 p menu_option.any? {|item| item.size >= 10}
 p [1,2,3].all? {|num| num > 0 }
 p [1,2,3].any? {|num| num > 3 }
+
+
+
+
+
+class Human
+    NAME = "Unknown"  
+    def initialize
+        @name2 = "Unknown"
+    end
+    def name
+        NAME
+    end
+    def name2
+        @name2
+    end
+end
+  
+class Noguchi < Human
+    def initialize
+        @name2 = "Hideyo"
+    end
+    NAME = "Hideyo"
+end
+  
+puts Noguchi.new.name
+puts Noguchi.new.name2
+
+
