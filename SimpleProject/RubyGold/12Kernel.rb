@@ -436,7 +436,6 @@ p Class.methods().grep(/eval/)
 
 
 
-
 class Human
     attr_reader :name
     alias original_name name  
