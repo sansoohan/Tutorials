@@ -1,3 +1,15 @@
+# Middle Size Infra Setup Guide
+
+1. [infra-controll-environmet-on-gcp](#infra-controll-environmet-on-gcp)
+2. [makebackup-instance](#makebackup-instance)
+3. [nginx-config](#nginx-config)
+4. [lets-encrypt-and-nginx](#lets-encrypt-and-nginx)
+5. [make-group-for-auto-load-balance](#make-group-for-auto-load-balance)
+6. [make-group-for-manual-load-balance](#make-group-for-manual-load-balance)
+7. [setup-load-balancer](#setup-load-balancer)
+8. [set-instance-static-ip](#set-instance-static-ip)
+9. [setup-dns](#setup-dns)
+
 # Infra Controll Environmet on GCP
 - Pin the Services you use
 
@@ -47,7 +59,7 @@
        - Name : (Example : InstanceNameSnapshot202004161225)
        - Source disk : (Select Stopped Instance)
      - Create Instance with snapshot
-     
+
        - Go Compute Engine > VM instance > Create
 
           <img width="255" src="./images/1f5183a9-4caa-44a3-a2ba-154b2340f7fd.png">
