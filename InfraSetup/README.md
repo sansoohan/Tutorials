@@ -1,0 +1,41 @@
+# About Infra Setup Guide
+- Infra Management
+  - Load Balancing
+  - Instance 
+  - Deploy Management
+  - Domain 
+  - Static IP
+- Instance Config
+  - SSL
+  - nginx
+  - screen
+  - crontab
+  - ssh tunneling
+  - scp
+  - docker swarm
+
+# Infra Suggestion
+- Small Size Infra : Only need Prod and Stage Environmennt
+  - Make Instance Cloud Service
+  - Access Instance and insert your SSH pubkey
+  - Set your SSH Alias with tunnel port on your .bashrc
+  - Set Static IP from Cloud Service
+  - Make SSL
+  - Get your domain for Prod/Stage each
+- Middle Size Infra : When you need Prod, Stage, Develop and Test Environment
+  - You need to make Small Size Infra first
+  - Green Blue Deployment : Shuffle Prod <-> Stage after you deploy
+    - Make Stage Load Balancer
+    - Make Prod Load Balancer
+    - Deploy on Stage
+    - Insert Stage Instance you deployed on Prod Load Balancer
+    - Shuffle Prod <-> Stage
+- Big Size Infra : If you need to make distribute processing (Job/Worker)
+  - Small Size Infra First
+  - First Scale Up : You need to make this programmaly
+    - Make Instance with docker-machine
+    - Build Your Docker Image
+    - Push Your Docker Image on Your Docker Registry
+    - Make Your docker swarm network
+    - Deploy Docker Swarm
+  - Second Scale Up : Small Size Infra -> Middle Size Infra (If you need)
