@@ -1,14 +1,11 @@
-# Middle Size Infra Setup Guide
+# Small Size Infra Setup Guide
 
 1. [infra-controll-environmet-on-gcp](#infra-controll-environmet-on-gcp)
 2. [makebackup-instance](#makebackup-instance)
 3. [nginx-config](#nginx-config)
 4. [lets-encrypt-and-nginx](#lets-encrypt-and-nginx)
-5. [make-group-for-auto-load-balance](#make-group-for-auto-load-balance)
-6. [make-group-for-manual-load-balance](#make-group-for-manual-load-balance)
-7. [setup-load-balancer](#setup-load-balancer)
-8. [set-instance-static-ip](#set-instance-static-ip)
-9. [setup-dns](#setup-dns)
+5. [set-instance-static-ip](#set-instance-static-ip)
+6. [setup-dns](#setup-dns)
 
 # Infra Controll Environmet on GCP
 - Pin the Services you use
@@ -233,88 +230,6 @@
       }
     }
     ```
-
-
-
-
-
-
-# Make Group for Auto Load Balance
-- [Backup Instance as image](#makebackup-instance)
-- Make Instance Template
-  - Go Compute Engine > Instance templates
-
-    <img width="255" src="./images/1f5183a9-4caa-44a3-a2ba-154b2340f7fd.png">
-  - Create New Instance Template
-
-    <img width="810" src="./images/994c183d-28a8-4483-a0f4-f77632c0a400.png">
-
-    -  Insert These Data and create
-      - Name : (Example : InstanceNameTemplate202004161225)
-      - Machine configuration
-      - Boot disk : (Instance Image)
-- Make Instance Group
-  - Go Compute Engine > Instance groups
-  - Create Instance Group
-
-    <img width="874" src="./images/bd1ae3f1-610b-4a1d-90fc-e750f0816149.png">
-
-    -  Insert These Data and create
-      - Name : (Example : InstanceNameGroup202004161225)
-      - Location
-      - Region
-      - Instance template 
-      - Autoscaling mode
-
-# Make Group for Manual Load Balance
-- Prepare Instance to insert into Group
-  - Go Compute Engine > VM instances
-  - Create Instance
-
-- Make Network endpoint group
-  - Go Compute Engine > Network endpoint groups
-  -  Insert These Data and create
-    - Name : (Example : InstanceNameGroup202004161225)
-    - Network endpoint group type
-    - Default port(This should be same as your nginx port. I recommend you to set 80)
-
-- Add Instance Into Group
-  - Go Compute Engine > Network endpoint groups
-
-    <img width="584" src="./images/ed9c7444-b4cf-4130-96c2-cd8988910175.png">
-
-  - Add network endpoint
-  - Select VM instance
-  - Click [Check primary IP addresses & alias IP range in 'nic0']
-  - Copy Instance IP
-
-    <img width="443" src="./images/37525e64-09c9-4085-86d5-5a18a73ac722.png">
-  - Click Add network endpoint and insert Instance IP
-  - Set port and create(This should be same as your nginx port. I recommend you to set 80)
-
-    <img width="539" src="./images/c770c9ca-b3da-4542-81cd-04cb12d5203a.png">
-
-# Setup Load Balancer
-- You can add Manual/Auto Load Balance Group Both
-- You need to prepare Load Balance Group
-- Flow
-  - User Access 443 -> Load Balance Front 443
-  - Load Balance Front end 443 -> Load Balance Back end 80
-  - Load Balance Back end 80 -> Load Balance Instance Nginx 80
-    - Load Balance Instance Nginx 80 -> Load Balance Instance Nginx Reverse proxy localhost:8080
-    - Load Balance Instance Nginx 80 -> Load Balance Instance Nginx Reverse proxy puma.sock
-- Go Network services > Load balancing > Create Load Balancer
-  - In here  select HTTP(S) Load Balancing
-    <img width="1034" src="./images/c3dfa715-d219-4acb-8d24-0d307a3c2f8a.png">
-  - Select From Internet to my VMs
-  - Click Backend configuration and add Load Balance Group you made
-  - Click Frontend configuration and make SSL cert with 443 port
-    - Name : (Example : InstanceNameFrontend202004161225)
-    - Protocol : HTTPS
-    - IP address : Create Static IP Address(Example : InstanceNameFrontendIP)
-    - Port : 443
-    - Certificate : create a new certificate with domain
-    - SSL policy : TSL 1.2 modern
 
 # Set Instance Static IP
 - You can set Static IP for each Instance
