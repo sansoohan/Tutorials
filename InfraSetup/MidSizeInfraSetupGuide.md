@@ -47,6 +47,7 @@
        - Name : (Example : InstanceNameSnapshot202004161225)
        - Source disk : (Select Stopped Instance)
      - Create Instance with snapshot
+     
        - Go Compute Engine > VM instance > Create
 
           <img width="255" src="./images/1f5183a9-4caa-44a3-a2ba-154b2340f7fd.png">
