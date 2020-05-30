@@ -30,7 +30,7 @@
     - Deploy on Stage
     - Insert Stage Instance you deployed on Prod Load Balancer
     - Shuffle Prod <-> Stage
-- [Big Size Infra : If you need to make distribute processing](./BigSizeInfraSetupGuide)
+- [Big Size Infra : If you need to make distribute processing](./BigSizeInfraSetupGuide.md)
   - Small Size Infra First
   - First Scale Up : You need to make this programmaly
     - Make Instance with docker-machine
