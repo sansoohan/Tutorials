@@ -19,7 +19,7 @@ class ChatServer:
       print("%s:%s has connected." % clientAddress)
       newClient = ChatClient(clientSocket, self)
       self.__clients.append(newClient)
-      Thread(target=newClient.run()).start()
+      Thread(target=newClient.run).start()
 
   def messageController(self, message):
     self.messageToEverybody(message)
@@ -56,7 +56,7 @@ class ChatClient:
 
 if __name__ == "__main__":
   chatServer = ChatServer('', 5000)
-  ACCEPT_THREAD = Thread(target=chatServer.run())
+  ACCEPT_THREAD = Thread(target=chatServer.run)
   ACCEPT_THREAD.start()
   ACCEPT_THREAD.join()
   chatServer.close()
