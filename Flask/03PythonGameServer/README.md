@@ -1,4 +1,4 @@
-battleship - ruby
+battleship - python
 =================
 
 Build Dependency
