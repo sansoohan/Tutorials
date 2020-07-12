@@ -1,4 +1,4 @@
-Chat Server - ruby
+Chat Server - python
 =================
 
 Build Dependency
