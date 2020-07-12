@@ -4,11 +4,11 @@ Chat Server - ruby
 Build Dependency
 -----------
 JDK > 9<br>
-Ruby > 2.3
+Python > 3.6.9
 
 Chat Server Excute
 ------------------
-ruby chatserver.rb
+python chatserver.py
 
 Chat Client Compile
 -----------------------

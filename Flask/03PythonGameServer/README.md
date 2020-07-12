@@ -4,11 +4,11 @@ battleship - ruby
 Build Dependency
 -----------
 JDK > 9<br>
-Ruby > 2.3
+Python > 3.6.9
 
 Game Server Excute
 ------------------
-ruby gameserver.rb
+python gameserver.py
 
 Game Client Compile
 -----------------------
