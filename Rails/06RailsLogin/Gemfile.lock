@@ -120,7 +120,8 @@ GEM
       mini_portile2 (~> 2.4.0)
     popper_js (1.14.5)
     public_suffix (3.0.3)
-    puma (3.12.6)
+    puma (4.3.12)
+      nio4r (~> 2.0)
     rack (2.2.2)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
@@ -223,7 +224,7 @@ DEPENDENCIES
   font-awesome-sass (~> 5.6.1)
   jbuilder (~> 2.5)
   jquery-rails
-  puma (~> 3.12)
+  puma (~> 4.3)
   rails (~> 5.2.2)
   sass-rails (~> 5.0)
   selenium-webdriver
